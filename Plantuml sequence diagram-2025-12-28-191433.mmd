@@ -1,0 +1,15 @@
+sequenceDiagram
+    actor Student
+    participant System
+    actor Admin
+
+    Student -> System: Login
+    System --> Student: Login successful
+
+    Student -> System: Scan QR code
+    System -> System: Validate QR code
+    System -> System: Calculate eco-points
+    System --> Student: Eco-points added
+
+    Student -> System: View eco-scoreboard
+    System --> Student: Display updated ranking
