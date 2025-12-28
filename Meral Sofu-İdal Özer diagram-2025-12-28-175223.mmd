@@ -1,0 +1,24 @@
+sequenceDiagram
+    actor Student
+        actor ClubLeader
+            actor Admin
+                participant System
+
+                    Student ->> System: Register / Login
+                        System -->> Student: Authentication success
+
+                            Student ->> System: Post resource
+                                System ->> Admin: Send resource for approval
+                                    Admin ->> System: Approve resource
+                                        System -->> Student: Resource published
+
+                                            ClubLeader ->> System: Create sustainability event
+                                                System ->> Admin: Send event for approval
+                                                    Admin ->> System: Approve event
+                                                        System -->> ClubLeader: Event published
+
+                                                            Student ->> System: Join event
+                                                                Student ->> System: Scan QR code
+                                                                    System ->> System: Validate QR
+                                                                        System -->> Student: Eco-points added
+                                                                            System -->> Student: Show updated leaderboard
